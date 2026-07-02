@@ -742,6 +742,8 @@
       (com limite de caracteres).</li>
     <li><strong>Imagem de Capa:</strong> Funcionalidade para envio de
       imagem representativa (Obrigatória).</li>
+    <li><strong>(Em caso de o Projeto de Impacto estar associado a uma Campanha) Selo de Campanha:</strong> Exibe um selo indicando a associação com um Camapanha (ver Requisito 13).</li>
+    <li><strong>(Em caso de o Projeto de Impacto estar associado a uma Campanha) Título de Campanha:</strong> Exibe o título da Campanha associada (ver Requisito 13).</li>
   </ul>
   <h4><strong>9.3 Visualização de Projeto de Impacto e Denúncia (RF
       9.3)</strong></h4>
@@ -773,6 +775,7 @@
     <li><strong>Nome de Usuário:</strong> Identificador único (ex:
       <code>samuel_missionary</code>).
     </li>
+    <li><strong>Agência Missionária:</strong> Exibe a agência à qual o missionário está vinculado.</li>
     <li><strong>Minibiografia:</strong> Texto curto descritivo ou
       informativo (ex: links de redes sociais).</li>
   </ul>
@@ -830,8 +833,16 @@
   <ul>
     <li><strong>Projeto:</strong> Exibe os detalhes do projeto de
       impacto.</li>
-    <li><strong>Campanha:</strong> Exibe informações de arrecadação e
-      metas.</li>
+    <li><strong>Campanha:</strong> Se o missionário possuir um Projeto de Impacto associado a uma Campanha promovida pela Administração do Mission app, deve exibir um contêiner com as informações da campanha. Esse contêiner deve reunir os seguintes elementos:
+      <ul>
+        <li>Carrossel rotativo de imagens;</li>
+        <li>Título da Campanha;</li>
+        <li>Subtítulo da Campanha;</li>
+        <li>Descrição da Campanha;</li>
+        <li>Selo de Campanha;</li>
+        <li>Botão para redirecionar à Página da Campanha;</li>
+      </ul>
+    </li>
     <li><strong>Postagens:</strong> Exibe o feed de publicações do
       missionário.</li>
     <li><em>Comportamento:</em> A aba ativa deve possuir um destaque
