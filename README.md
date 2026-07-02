@@ -2,7 +2,7 @@
 
 Este repositório centraliza a documentação de especificação de requisitos funcionais e não funcionais para o **Mission App**, uma plataforma dedicada a conscientizar igrejas e apoiar o trabalho missionário ao redor do mundo.
 
-O documento principal está no formato HTML interativo em [requisitos.html](requisitos.html), que inclui o detalhamento completo de cada requisito, fluxos de uso e mockups visuais integrados (Localizados na pasta `img/`).
+O documento principal está disponível no site publicado em [Mission App Requirements List](https://missionappfaithtech.github.io/MissionAppRequirementsList/), que inclui o detalhamento completo de cada requisito, fluxos de uso e mockups visuais integrados (localizados na pasta `img/`).
 
 ---
 
@@ -16,9 +16,8 @@ O documento principal está no formato HTML interativo em [requisitos.html](requ
 ## 🛠️ Como Visualizar a Especificação
 
 Para ler o documento completo com todos os detalhes e imagens integradas:
-1. Faça o clone deste repositório ou baixe os arquivos.
-2. Abra o arquivo [requisitos.html](requisitos.html) em qualquer navegador web moderno.
-3. Utilize o **Sumário Interativo** ou o botão **"Voltar ao Topo"** para navegar rapidamente pelas seções.
+1. Acesse o site publicado em [Mission App Requirements List](https://missionappfaithtech.github.io/MissionAppRequirementsList/) em qualquer navegador web moderno.
+2. Utilize o **Sumário Interativo** ou o botão **"Voltar ao Topo"** para navegar rapidamente pelas seções.
 
 ---
 

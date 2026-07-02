@@ -5,6 +5,7 @@
   <meta name="generator" content="HTML Tidy for HTML5 for Linux version 5.6.0">
   <meta charset="utf-8">
   <title>Especificação de Requisitos do Mission App</title>
+  <link rel="icon" type="image/png" href="img/MissionAppLogo.png">
 
   <style>
     body {
@@ -31,6 +32,32 @@
       font-size: 2.2em;
       border-bottom: 2px solid #ff7a3c;
       padding-bottom: 0.3em;
+    }
+
+    .page-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 2px solid #ff7a3c;
+      padding-bottom: 0.3em;
+      margin: 40px 0 1.2em;
+    }
+
+    .page-header h1 {
+      border-bottom: 0;
+      padding-bottom: 0;
+      margin: 0;
+    }
+
+    .page-logo {
+      width: 44px;
+      height: 44px;
+      margin: 0;
+      border: 0;
+      border-radius: 10px;
+      box-shadow: none;
+      object-fit: contain;
+      flex: 0 0 auto;
     }
 
     h2 {
@@ -268,7 +295,10 @@
 </head>
 
 <body>
-  <h1>📋 Especificação de Requisitos do Mission App</h1>
+  <header class="page-header">
+    <img class="page-logo" src="img/MissionAppLogo.png" alt="Logo do Mission App">
+    <h1>Especificação de Requisitos do Mission App</h1>
+  </header>
   <blockquote>
     <p>Plataforma para conscientizar Igrejas do trabalho missionário realizado ao redor do mundo através
       de Campanhas Missionárias recorrentes.</p>
