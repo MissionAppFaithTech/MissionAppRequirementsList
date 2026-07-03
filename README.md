@@ -17,7 +17,33 @@ O documento principal está disponível no site publicado em [Mission App Requir
 
 Para ler o documento completo com todos os detalhes e imagens integradas:
 1. Acesse o site publicado em [Mission App Requirements List](https://missionappfaithtech.github.io/MissionAppRequirementsList/) em qualquer navegador web moderno.
-2. Utilize o **Sumário Interativo** ou o botão **"Voltar ao Topo"** para navegar rapidamente pelas seções.
+2. Utilize o **sumário lateral**, a **busca de requisitos** ou o botão **"Voltar ao topo"** para navegar rapidamente pelas seções.
+
+---
+
+## 🧭 Estrutura do Projeto
+
+```text
+MissionAppRequirementsList/
+|-- index.html
+|-- css/
+|   |-- base.css
+|   |-- layout.css
+|   |-- sidebar.css
+|   |-- content.css
+|   |-- components.css
+|   `-- responsive.css
+|-- js/
+|   |-- main.js
+|   |-- navigation.js
+|   |-- search.js
+|   `-- scroll-spy.js
+|-- img/
+|-- README.md
+`-- .github/workflows/pages.yml
+```
+
+O `index.html` concentra o conteúdo da especificação. Os estilos e comportamentos foram separados por responsabilidade para facilitar manutenção, responsividade e evolução da navegação.
 
 ---
 
