@@ -330,6 +330,7 @@
     <li><a href="#rf-16">16. Sistema de Denúncias</a></li>
     <li><a href="#rf-17">17. Administração do Sistema</a></li>
     <li><a href="#rf-18">18. Painel Administrativo</a></li>
+    <li><a href="#rf-19">19. Histórico de Campanhas</a></li>
   </ul>
   <h3>🔒 Requisitos Não Funcionais</h3>
   <ul>
@@ -1509,6 +1510,18 @@
     utilizar um mecanismo/botão para reativar a conta. A reativação
     reverte o soft delete, remove as restrições da "role" suspensa e
     restaura o acesso e a visibilidade do perfil na plataforma.</p>
+  <h3 id="rf-19"><strong>19. Histórico de Campanhas</strong></h3>
+  <h4><strong>19.1 Registro Histórico de Campanhas (RF 19.1)</strong></h4>
+  <p>O sistema deve manter um histórico consultável das campanhas, armazenando apenas dados textuais (string) e datas relacionadas ao ciclo de vida da campanha. Este histórico deve contemplar, no mínimo, os seguintes itens:</p>
+  <ul>
+    <li>A campanha, com suas datas inclusive de início e término;</li>
+    <li>Os Projetos de Impacto associados à campanha;</li>
+    <li>Os missionários associados a cada Projeto de Impacto vinculado.</li>
+  </ul>
+  <h4><strong>19.2 Restrição de Armazenamento (RF 19.2)</strong></h4>
+  <p>O histórico de campanhas não deve armazenar imagens, banners, capas, selos ou qualquer outro arquivo binário. Toda a persistência desse histórico deve ser limitada a informações textuais e datas, garantindo um registro leve, auditável e consistente com a rastreabilidade das campanhas.</p>
+  <h4><strong>19.3 Consulta do Histórico (RF 19.3)</strong></h4>
+  <p>O histórico deve permitir a consulta por campanha específica, exibindo os Projetos de Impacto associados e os missionários relacionados a cada projeto, respeitando o período informado pelas datas da campanha.</p>
   <h2>🔒 Requisitos Não Funcionais por Categoria</h2>
   <h3 id="rnf-1"><strong>1. Segurança (NF.1)</strong></h3>
   <h4 id="rnf-1-1"><strong>1.1 Criptografia de Dados Sensíveis (NF
