@@ -9,7 +9,8 @@ O documento principal está disponível no site publicado em [Mission App Requir
 ## 🔗 Links Úteis do Projeto
 
 *   **Repositório no GitHub:** [MissionAppFaithTech](https://github.com/MissionAppFaithTech)
-*   **Design no Figma:** [Protótipo Interativo](https://www.figma.com/design/uMAwJPYKaEoN7ScjAmgZ6O/Mission-app?node-id=902-4740&t=mX8OgGJCVgXsPr0h-0)
+*   **Design no Figma:** [Telas e Componentes](https://www.figma.com/design/uMAwJPYKaEoN7ScjAmgZ6O/Mission-app?node-id=902-4740&t=mX8OgGJCVgXsPr0h-0)
+*   **Futuras Funcionalidades do MissionApp:** [Documento com futuros passos e funcionalidades](https://docs.google.com/document/d/1xejaufVDE1g66fMUhLj_naYY2KtVON6-CCy_s6yEc1Y/edit?tab=t.0#heading=h.c22xkczclznq)
 
 ---
 
