@@ -430,25 +430,27 @@
   <h4><strong>8.1 Criação de Postagens (RF 8.1)</strong></h4>
   <ul>
     <li><strong>Apenas o perfil missionário</strong> deve poder criar
-      publicações contendo uma legenda, um link externo opcional e uma
-      imagem.</li>
+      publicações contendo uma legenda, até 3 imagens, um link externo opcional e um link embed do YouTube opcional.</li>
     <li>Cada postagem será composta de:
       <ul>
         <li>Avatar contendo a foto do missionário</li>
         <li>Nome do missionário</li>
         <li>Legenda</li>
+        <li>Até 3 imagens anexadas</li>
         <li>Link externo (opcional)</li>
-        <li>Foto anexada (opcional)</li>
+        <li>Link embed do YouTube (opcional)</li>
       </ul>
     </li>
     <li>O sistema deve obrigar o preenchimento da
       <strong>legenda</strong>.
     </li>
+    <li>Cada imagem publicada deve incrementar o contador global de imagens do missionário, limitado a 50 imagens no total.</li>
   </ul>
   <h4><strong>8.2 Gerenciamento de Postagens (RF 8.2)</strong></h4>
   <p>O missionário deve poder excluir suas postagens. A exclusão deve
     remover tanto o registro visual quanto o arquivo de imagem
     armazenado.</p>
+  <p>Ao atingir o limite de 50 imagens no total, o sistema deve exibir um alerta informando que o missionário atingiu o limite de 50 imagens. Caso ele opte por prosseguir com o envio de uma nova imagem, o sistema deve solicitar confirmação explícita e substituir a imagem mais antiga pela nova imagem enviada.</p>
   <h4><strong>8.3 Comentários nas Postagens (RF 8.3)</strong></h4>
   <ul>
     <li>Não haverá comentários inicialmente.</li>
@@ -521,6 +523,7 @@
       <code>samuel_missionary</code>).
     </li>
     <li><strong>Agência Missionária:</strong> Exibe a agência à qual o missionário está vinculado.</li>
+    <li><strong>Selo de Campanha:</strong> Quando o missionário possuir um Projeto de Impacto associado a uma Campanha, o cabeçalho deve exibir o selo correspondente próximo às informações de identificação.</li>
     <li><strong>Minibiografia:</strong> Texto curto descritivo ou
       informativo (ex: links de redes sociais).</li>
   </ul>
@@ -866,6 +869,7 @@
     <li>Até 1 (um) link para vídeo: URL externa para Youtube ou plataforma externa de vídeo;</li>
     <li>Link de redirecionamento;</li>
     <li>Link de compartilhamento;</li>
+    <li>Dia Oficial de Realização da Campanha nas Igrejas;</li>
     <li>Data de início;</li>
     <li>Data de término;</li>
   </ul>
@@ -874,7 +878,7 @@
     associados. Devem ser criadas exclusivamente pelo administrador,
     conforme <strong>Requisito 18.4</strong>.</p>
   <h4>13.2 Associação de Projetos de Impacto (RF 13.2)</h4>
-  <p>Cada campanha poderá possuir um ou mais Projetos de Impacto
+  <p><strong>Uma Campanha pode ou não ter Projetos de Impacto associados</strong>. Caso tenha, poderá possuir um ou mais Projetos de Impacto
     associados.</p>
   <p>Os projetos associados deverão ser selecionados pelo
     administrador durante a criação ou edição da campanha, conforme
@@ -892,6 +896,7 @@
     <li>Descrição completa;</li>
     <li>Selo de Campanha;</li>
     <li>Imagem de Perfil;</li>
+    <li>Dia Oficial de Realização da Campanha nas Igrejas;</li>
     <li>Até cinco imagens;</li>
     <li>Até 1 (um) link para vídeo: URL externa para Youtube ou plataforma externa de vídeo;</li>
     <li>Botão de redirecionamento;</li>
@@ -914,6 +919,7 @@
         <li>Subtítulo da Campanha;</li>
         <li>Descrição da Campanha;</li>
         <li>Selo de Campanha;</li>
+        <li>Dia Oficial de Realização da Campanha nas Igrejas;</li>
         <li>Botão para redirecionar à Página da Campanha;</li>
         <li>Botão "Ver Projetos de Impacto" (Link que leva aos Projetos de
           Impacto selecionados);</li>
@@ -945,6 +951,52 @@
     usuários, conforme <strong>Requisito 18.4</strong>.</p>
   <p>Campanhas arquivadas ou em rascunho não deverão ser acessíveis
     pela interface pública.</p>
+
+  <h4>13.7 Padrão de Criação de Campanhas (RF 13.7)</h4>
+
+  <p>
+    A criação de Campanhas deverá seguir o padrão de projeto
+    <strong>Factory Method combinado com Template Method</strong>,
+    de modo a suportar diferentes tipos de Campanha sem duplicação de regras de negócio.
+  </p>
+
+  <p>
+    Uma classe abstrata <code>Campanha</code> deverá definir, via Template Method,
+    o esqueleto comum de validação e publicação, contemplando os campos obrigatórios
+    descritos no Requisito 13.1 (título, subtítulo, descrição, banner principal,
+    selo de campanha, imagem de perfil, imagens adicionais, link de vídeo,
+    links de redirecionamento e compartilhamento, e datas).
+  </p>
+
+  <p>
+    Subclasses concretas deverão implementar apenas as regras específicas de cada
+    tipo de Campanha (<strong>No futuro, podem haver novos tipos ou modalidades de Campanha</strong>):
+  </p>
+
+  <ul>
+    <li>
+      <strong>Campanha Default</strong>: exige Data de Início e Data de Término,
+      com validação de que o término seja posterior ao início;
+    </li>
+  </ul>
+
+  <p>
+    Uma <code>CampanhaFactory</code> deverá centralizar a instanciação dos diferentes
+    tipos de Campanha, garantindo que:
+  </p>
+
+  <ul>
+    <li>apenas o administrador possa criar ou editar Campanhas, conforme Requisito 18.4;</li>
+    <li>
+      cada Campanha seja validada de acordo com as regras do seu tipo antes de ser
+      associada a Projetos de Impacto (RF 13.2) ou publicada (RF 13.6);
+    </li>
+    <li>
+      novos tipos de Campanha possam ser adicionados futuramente sem necessidade
+      de alteração das regras já existentes, respeitando o princípio de
+      aberto/fechado (Open/Closed).
+    </li>
+  </ul>
   <h3 id="rf-14"><strong>14. Seção de Projetos de Impactos</strong></h3>
   <h4><strong>14.1 Aba de Projetos de Impacto (RF 14.1)</strong></h4>
   <p>O sistema deve exibir, tanto para missionários quanto para
@@ -980,9 +1032,7 @@
     administradores durante uma campanha de promoção de projetos,
     conforme painel de gerenciamento administrativo.</p>
   <ul>
-    <li>Caso haja uma lista de projetos selecionados, será exibido um
-      título com o nome da campanha de promoção (Exemplo: “<strong>Semana
-        de missões batista</strong>”).</li>
+    <li>Caso haja uma lista de projetos selecionados, será exibido um contêiner com os detalhes da Campanha, conforme especifica o <strong>Requisito 13</strong>.</li>
     <li>Após todos os projetos selecionados pelo administrador terem
       sido exibidos ao usuário, então, uma heurística de aleatoriedade
       será usada para selecionar as recomendações paginadas.</li>
@@ -1215,19 +1265,14 @@
   <p>O administrador deve poder alterar o estado da campanha
     entre:</p>
   <ul>
-    <li>Rascunho;</li>
-    <li>Publicada;</li>
+    <li>Rascunho.</li>
+    <li>Publicada.</li>
     <li>Arquivada.</li>
   </ul>
   <p>Somente campanhas publicadas poderão ser exibidas aos usuários
     da plataforma.</p>
   <h5>18.4.5 Ordenação de Destaques (RF 18.4.5)</h5>
-  <p>O painel administrativo deve permitir definir a ordem de
-    exibição das campanhas na "Seção (ou Aba) de Projetos de Impacto". Para isso, cada item
-    da lista deve possuir um botão "Remover", permitindo a exclusão
-    individual de uma campanha da seleção, além de um botão "Esvaziar
-    Lista" que, mediante confirmação, remove todos os projetos da
-    seleção atual de uma só vez.</p>
+  <p>A lista de destaques da campanha deve possuir um botão "Remover", permitindo a exclusão individual de uma campanha da seleção, além de um botão "Esvaziar Lista" que, mediante confirmação, remove todos os projetos da seleção atual de uma só vez.</p>
   <h4><strong>18.5 Gerenciamento de Denúncias e Reativação de Contas
       (RF 18.5)</strong></h4>
   <h5><strong>18.18.1 Aba de Denunciados (RF 18.18.1)</strong></h5>
