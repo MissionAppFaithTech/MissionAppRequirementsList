@@ -4,310 +4,37 @@
 <head>
   <meta name="generator" content="HTML Tidy for HTML5 for Linux version 5.6.0">
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Especificação de Requisitos do Mission App</title>
   <link rel="icon" type="image/png" href="img/MissionAppLogo.png">
 
-  <style>
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.6;
-      color: #333333;
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5 {
-      color: #1a5f7a;
-      font-family: Arial, Helvetica, sans-serif;
-      margin-top: 1.5em;
-      margin-bottom: 0.5em;
-    }
-
-    h1 {
-      font-size: 2.2em;
-      border-bottom: 2px solid #ff7a3c;
-      padding-bottom: 0.3em;
-    }
-
-    .page-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      border-bottom: 2px solid #ff7a3c;
-      padding-bottom: 0.3em;
-      margin: 40px 0 1.2em;
-    }
-
-    .page-header h1 {
-      border-bottom: 0;
-      padding-bottom: 0;
-      margin: 0;
-    }
-
-    .page-logo {
-      width: 44px;
-      height: 44px;
-      margin: 0;
-      border: 0;
-      border-radius: 10px;
-      box-shadow: none;
-      object-fit: contain;
-      flex: 0 0 auto;
-    }
-
-    h2 {
-      font-size: 1.6em;
-      border-bottom: 1px solid #dddddd;
-      padding-bottom: 0.2em;
-    }
-
-    h3 {
-      font-size: 1.3em;
-    }
-
-    h4 {
-      font-size: 1.1em;
-      color: #333333;
-    }
-
-    h5 {
-      font-size: 1.0em;
-      color: #555555;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1.5em 0;
-      font-size: 0.95em;
-    }
-
-    th,
-    td {
-      border: 1px solid #cccccc;
-      padding: 8px 12px;
-      text-align: left;
-    }
-
-    th {
-      background-color: #f2f7f9;
-      font-weight: bold;
-      color: #1a5f7a;
-    }
-
-    tr:nth-child(even) {
-      background-color: #f9f9f9;
-    }
-
-    blockquote {
-      border-left: 4px solid #ff7a3c;
-      background-color: #fffaf7;
-      padding: 10px 20px;
-      margin: 1.5em 0;
-      color: #555555;
-    }
-
-    blockquote p {
-      margin: 0;
-    }
-
-    ul,
-    ol {
-      margin: 1em 0;
-      padding-left: 20px;
-    }
-
-    li {
-      margin-bottom: 0.5em;
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin: 1.5em 0;
-      border: 1px solid #eeeeee;
-    }
-
-    figure {
-      margin: 1.5em 0;
-      padding: 12px;
-      background-color: #f9fafb;
-      border: 1px solid #e5e7eb;
-      border-radius: 6px;
-      text-align: center;
-    }
-
-    figure img {
-      margin: 0 auto 10px auto;
-      border: 1px solid #d1d5db;
-      border-radius: 4px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    }
-
-    figcaption {
-      font-size: 0.9em;
-      color: #6b7280;
-      font-style: italic;
-    }
-
-    hr {
-      border: 0;
-      border-top: 1px solid #dddddd;
-      margin: 2em 0;
-    }
-
-    a {
-      color: #1a5f7a;
-      text-decoration: underline;
-    }
-
-    code {
-      font-family: Consolas, Monaco, monospace;
-      background-color: #f4f4f4;
-      padding: 2px 4px;
-      border-radius: 3px;
-      font-size: 0.9em;
-    }
-
-    .callout {
-      border-left: 4px solid #cccccc;
-      padding: 12px 16px;
-      margin: 1.5em 0;
-      border-radius: 4px;
-    }
-
-    .callout-title {
-      font-weight: bold;
-      margin-bottom: 0.5em;
-      font-size: 1.05em;
-    }
-
-    .callout-important {
-      border-color: #e02424;
-      background-color: #fdf2f2;
-      color: #9b1c1c;
-    }
-
-    .callout-note {
-      border-color: #1c64f2;
-      background-color: #ebf5ff;
-      color: #1e429f;
-    }
-
-    .callout-tip {
-      border-color: #0e9f6e;
-      background-color: #f3faf7;
-      color: #03543f;
-    }
-
-    .callout-warning {
-      border-color: #d03801;
-      background-color: #feecdc;
-      color: #92400e;
-    }
-
-    #btn-top-container {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      display: flex;
-      align-items: center;
-      z-index: 1000;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(20px);
-      transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
-    }
-
-    #btn-top-container.visible {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    #btn-top {
-      width: 50px;
-      height: 50px;
-      background-color: #1a5f7a;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      font-size: 1.5em;
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    #btn-top:hover {
-      background-color: #ff7a3c;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-    }
-
-    #btn-top:active {
-      transform: translateY(0);
-    }
-
-    #btn-top-tooltip {
-      position: relative;
-      margin-right: 15px;
-      background-color: #1e293b;
-      color: white;
-      padding: 10px 16px;
-      border-radius: 8px;
-      font-size: 0.9em;
-      font-weight: bold;
-      white-space: nowrap;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-      opacity: 0;
-      visibility: hidden;
-      transform: translateX(10px);
-      transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
-    }
-
-    #btn-top-container:hover #btn-top-tooltip,
-    #btn-top-tooltip.active {
-      opacity: 1;
-      visibility: visible;
-      transform: translateX(0);
-    }
-
-    #btn-top-tooltip::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      right: -6px;
-      transform: translateY(-50%);
-      border-width: 6px 0 6px 6px;
-      border-style: solid;
-      border-color: transparent transparent transparent #1e293b;
-    }
-  </style>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/sidebar.css">
+  <link rel="stylesheet" href="css/content.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
 </head>
 
 <body>
-  <header class="page-header">
-    <img class="page-logo" src="img/MissionAppLogo.png" alt="Logo do Mission App">
-    <h1>Especificação de Requisitos do Mission App</h1>
-  </header>
-  <blockquote>
-    <p>Plataforma para conscientizar Igrejas do trabalho missionário realizado ao redor do mundo através
-      de Campanhas Missionárias recorrentes.</p>
-    <p><strong>Links:</strong> <a href="https://github.com/MissionAppFaithTech" target="_blank"
-        rel="noopener noreferrer">GitHub</a> | <a
-        href="https://www.figma.com/design/uMAwJPYKaEoN7ScjAmgZ6O/Mission-app?node-id=902-4740&t=mX8OgGJCVgXsPr0h-0"
-        target="_blank" rel="noopener noreferrer">Design Figma</a></p>
-  </blockquote>
-  <hr>
+  <button class="mobile-menu-button" type="button" data-menu-toggle aria-controls="doc-sidebar" aria-expanded="false">
+    ☰ Sumário
+  </button>
+
+  <div class="site-shell">
+    <aside class="doc-sidebar" id="doc-sidebar" aria-label="Sumário dos requisitos">
+      <div class="sidebar-brand">
+        <img src="img/MissionAppLogo.png" alt="Logo do Mission App">
+        <div>
+          <span class="sidebar-title">Mission App</span>
+          <span class="sidebar-subtitle">Especificação de requisitos</span>
+        </div>
+      </div>
+      <div class="sidebar-search">
+        <label class="sr-only" for="doc-search">Buscar requisito</label>
+        <input id="doc-search" type="search" placeholder="Buscar requisito..." autocomplete="off">
+      </div>
+      <nav class="sidebar-nav" id="requirements-nav" aria-label="Navegação dos requisitos">
   <h2 id="sumario">📊 Sumário dos Requisitos</h2>
   <h3>📌 Requisitos Funcionais</h3>
   <ul>
@@ -378,6 +105,23 @@
       </ul>
     </li>
   </ul>
+        <p class="search-empty" id="search-empty">Nenhum requisito encontrado.</p>
+      </nav>
+    </aside>
+    <div class="sidebar-overlay" data-sidebar-overlay></div>
+    <main class="doc-content" id="conteudo">
+  <header class="page-header">
+    <img class="page-logo" src="img/MissionAppLogo.png" alt="Logo do Mission App">
+    <h1>Especificação de Requisitos do Mission App</h1>
+  </header>
+  <blockquote>
+    <p>Plataforma para conscientizar Igrejas do trabalho missionário realizado ao redor do mundo através
+      de Campanhas Missionárias recorrentes.</p>
+    <p><strong>Links:</strong> <a href="https://github.com/MissionAppFaithTech" target="_blank"
+        rel="noopener noreferrer">GitHub</a> | <a
+        href="https://www.figma.com/design/uMAwJPYKaEoN7ScjAmgZ6O/Mission-app?node-id=902-4740&t=mX8OgGJCVgXsPr0h-0"
+        target="_blank" rel="noopener noreferrer">Design Figma</a></p>
+  </blockquote>
   <hr>
   <h2>📌 Requisitos Funcionais</h2>
   <h3 id="rf-1"><strong>1. Autenticação e Acesso</strong></h3>
@@ -1721,51 +1465,14 @@
     <li>Atenção especial para as telas de criação de post e edição de
       perfil.</li>
   </ul>
-  <div id="btn-top-container">
-    <div id="btn-top-tooltip">Ir para o sumário</div>
-    <button id="btn-top" title="Voltar ao Sumário">▲</button>
+    </main>
   </div>
 
-  <script>
-    const container = document.getElementById('btn-top-container');
-    const btnTop = document.getElementById('btn-top');
-    const tooltip = document.getElementById('btn-top-tooltip');
-    const sumarioElement = document.getElementById('sumario');
-    let hasShownTooltip = false;
-    let tooltipTimeout;
-
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        if (!container.classList.contains('visible')) {
-          container.classList.add('visible');
-
-          // Auto-show tooltip for 3 seconds when the button first appears
-          if (!hasShownTooltip) {
-            showTooltipTemporarily();
-            hasShownTooltip = true;
-          }
-        }
-      } else {
-        container.classList.remove('visible');
-        // Reset flag when scrolling to top so it can trigger again on next scroll down
-        hasShownTooltip = false;
-        clearTimeout(tooltipTimeout);
-        tooltip.classList.remove('active');
-      }
-    });
-
-    function showTooltipTemporarily() {
-      tooltip.classList.add('active');
-      clearTimeout(tooltipTimeout);
-      tooltipTimeout = setTimeout(() => {
-        tooltip.classList.remove('active');
-      }, 3000);
-    }
-
-    btnTop.addEventListener('click', () => {
-      sumarioElement.scrollIntoView({ behavior: 'smooth' });
-    });
-  </script>
+  <div id="btn-top-container">
+    <div id="btn-top-tooltip">Voltar ao topo</div>
+    <button id="btn-top" title="Voltar ao topo">▲</button>
+  </div>
+  <script type="module" src="js/main.js"></script>
 </body>
 
 </html>
