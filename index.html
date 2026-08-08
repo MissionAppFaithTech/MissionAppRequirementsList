@@ -182,19 +182,42 @@
     <li>Telefone;</li>
     <li>Comunidade de Fé <strong>(opcional)</strong>:
       <ul>
+        <li>O campo deve ser um seletor com busca, no qual o usuário
+          apoiador digita o nome de sua comunidade de fé e o sistema
+          sugere, em tempo real, as comunidades já cadastradas na
+          plataforma.</li>
         <li>Caso exista a comunidade de fé no banco de dados, o usuário
           apoiador simplesmente seleciona esta.</li>
-        <li>Caso não exista, o usuário apoiador deverá clicar no botão
-          “Adicionar nova Comunidade de Fé” e criar uma nova comunidade de
-          fé, colocando:
+        <li>Caso a busca não retorne nenhuma correspondência, o sistema
+          deve exibir o estado vazio “Nenhum resultado encontrado”
+          acompanhado do botão “Adicionar nova Comunidade de Fé”.</li>
+        <li>Ao clicar no botão “Adicionar nova Comunidade de Fé”, o
+          sistema deve abrir um modal de cadastro de comunidade de fé
+          contendo:
           <ul>
-            <li>Nome da Comunidade de fé</li>
-            <li>Telefone (Opcional)</li>
-            <li>Nome do Pastor (Obrigatório)</li>
-            <li>Telefone do Pastor (Opcional)</li>
-            <li>Endereço da Igreja (através do CEP) (Futura implementação)</li>
+            <li>Nome da Comunidade de Fé (Obrigatório);</li>
+            <li>Endereço 1 (Opcional);</li>
+            <li>Endereço 2 (Opcional);</li>
+            <li>País (Obrigatório);</li>
+            <li>Estado/Província (Obrigatório);</li>
+            <li>Cidade (Obrigatório);</li>
+            <li>CEP ou Código Postal (Opcional);</li>
+            <li>Website (Opcional);</li>
+            <li>Nome do Pastor (Obrigatório);</li>
+            <li>Telefone do Pastor (Opcional);</li>
+            <li>Telefone da Comunidade de Fé (Opcional).</li>
           </ul>
         </li>
+        <li>O modal deve manter o botão de confirmação (“Adicionar
+          Comunidade de Fé”) desabilitado enquanto houver algum campo
+          obrigatório não preenchido, exibir a validação logo abaixo de
+          cada campo obrigatório em branco (por exemplo, “Nome é
+          obrigatório”) e oferecer um botão “Cancelar”, que fecha o modal
+          sem salvar os dados digitados.</li>
+        <li>Após a confirmação, a comunidade de fé deve ser persistida,
+          ficar imediatamente disponível na busca para os demais usuários
+          da plataforma e ser automaticamente selecionada no cadastro em
+          andamento.</li>
       </ul>
     </li>
   </ul>
@@ -227,19 +250,43 @@
         <li>Breve descrição sobre projeto ou atuação missionária;</li>
         <li>Comunidade de Fé:
           <ul>
-            <li>Caso exista a comunidade de fé no banco de dados, o usuário
-              apoiador simplesmente seleciona esta.</li>
-            <li>Caso não exista, o usuário apoiador deverá clicar no botão
-              “Adicionar nova Comunidade de Fé” e criar uma nova comunidade de
-              fé, colocando:
+            <li>O campo deve ser um seletor com busca, no qual o
+              missionário digita o nome de sua comunidade de fé e o
+              sistema sugere, em tempo real, as comunidades já
+              cadastradas na plataforma.</li>
+            <li>Caso exista a comunidade de fé no banco de dados, o
+              missionário simplesmente seleciona esta.</li>
+            <li>Caso a busca não retorne nenhuma correspondência, o
+              sistema deve exibir o estado vazio “Nenhum resultado
+              encontrado” acompanhado do botão “Adicionar nova Comunidade
+              de Fé”.</li>
+            <li>Ao clicar no botão “Adicionar nova Comunidade de Fé”, o
+              sistema deve abrir um modal de cadastro de comunidade de fé
+              contendo:
               <ul>
-                <li>Nome da Comunidade de fé</li>
-                <li>Telefone (Opcional)</li>
-                <li>Nome do Pastor (Obrigatório)</li>
-                <li>Telefone do Pastor (Opcional)</li>
-                <li>Endereço da Igreja (através do CEP) (Futura implementação)</li>
+                <li>Nome da Comunidade de Fé (Obrigatório);</li>
+                <li>Endereço 1 (Opcional);</li>
+                <li>Endereço 2 (Opcional);</li>
+                <li>País (Obrigatório);</li>
+                <li>Estado/Província (Obrigatório);</li>
+                <li>Cidade (Obrigatório);</li>
+                <li>CEP ou Código Postal (Opcional);</li>
+                <li>Website (Opcional);</li>
+                <li>Nome do Pastor (Obrigatório);</li>
+                <li>Telefone do Pastor (Opcional);</li>
+                <li>Telefone da Comunidade de Fé (Opcional).</li>
               </ul>
             </li>
+            <li>O modal deve manter o botão de confirmação (“Adicionar
+              Comunidade de Fé”) desabilitado enquanto houver algum campo
+              obrigatório não preenchido, exibir a validação logo abaixo
+              de cada campo obrigatório em branco (por exemplo, “Nome é
+              obrigatório”) e oferecer um botão “Cancelar”, que fecha o
+              modal sem salvar os dados digitados.</li>
+            <li>Após a confirmação, a comunidade de fé deve ser
+              persistida, ficar imediatamente disponível na busca para os
+              demais usuários da plataforma e ser automaticamente
+              selecionada no cadastro em andamento.</li>
           </ul>
         </li>
         <li>Nome do Pastor;</li>
@@ -253,10 +300,40 @@
     </li>
   </ul>
   <h5><strong>3.1.2 Agências missionárias:</strong></h5>
-  <p>As agências devem ser exibidas em um select. O missionário deve
-    escrever o nome de sua agência e selecionar uma dentre as
-    previamente cadastradas. Caso não haja, o missionário pode
-    cadastrar uma Agência missionária.</p>
+  <p>O campo de Agência Missionária deve seguir o mesmo fluxo da
+    Comunidade de Fé: um seletor com busca, no qual o missionário
+    escreve o nome de sua agência e seleciona uma dentre as previamente
+    cadastradas.</p>
+  <ul>
+    <li>Caso a busca não retorne nenhuma correspondência, o sistema deve
+      exibir o estado vazio “Nenhum resultado encontrado” acompanhado do
+      botão “Adicionar nova Agência Missionária”.</li>
+    <li>Ao clicar no botão “Adicionar nova Agência Missionária”, o
+      sistema deve abrir um modal de cadastro de agência contendo:
+      <ul>
+        <li>Nome da Agência Missionária (Obrigatório);</li>
+        <li>Endereço 1 (Opcional);</li>
+        <li>Endereço 2 (Opcional);</li>
+        <li>País (Obrigatório);</li>
+        <li>Estado/Província (Obrigatório);</li>
+        <li>Cidade (Obrigatório);</li>
+        <li>CEP ou Código Postal (Opcional);</li>
+        <li>Website (Opcional);</li>
+        <li>Telefone de contato com a Agência Missionária
+          (Obrigatório).</li>
+      </ul>
+    </li>
+    <li>O modal deve manter o botão de confirmação (“Adicionar Agência
+      Missionária”) desabilitado enquanto houver algum campo obrigatório
+      não preenchido, exibir a validação logo abaixo de cada campo
+      obrigatório em branco (por exemplo, “Nome é obrigatório”) e
+      oferecer um botão “Cancelar”, que fecha o modal sem salvar os
+      dados digitados.</li>
+    <li>Após a confirmação, a agência missionária deve ser persistida,
+      ficar imediatamente disponível na busca para os demais usuários da
+      plataforma e ser automaticamente selecionada no cadastro em
+      andamento.</li>
+  </ul>
   <h5><strong>3.1.3 Gerenciamento de Perfil do Missionário (RF
       3.3)</strong></h5>
   <ul>
@@ -1150,6 +1227,9 @@
     os seguintes dados originais de seu cadastro:</p>
   <ul>
     <li>Nome da Comunidade de Fé (Igreja).</li>
+    <li>Endereço da Comunidade de Fé (Endereço 1, Endereço 2, País,
+      Estado/Província, Cidade e CEP ou Código Postal).</li>
+    <li>Website da Comunidade de Fé.</li>
     <li>Telefone da Igreja.</li>
     <li>Nome do Pastor responsável.</li>
     <li>Telefone do Pastor.</li>
