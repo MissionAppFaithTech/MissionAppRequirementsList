@@ -58,6 +58,8 @@
     <li><a href="#rf-17">17. Administração do Sistema</a></li>
     <li><a href="#rf-18">18. Painel Administrativo</a></li>
     <li><a href="#rf-19">19. Histórico de Campanhas</a></li>
+    <li><a href="#rf-20">20. Papéis e Privilégios do
+        Avaliador</a></li>
   </ul>
   <h3>🔒 Requisitos Não Funcionais</h3>
   <ul>
@@ -126,18 +128,18 @@
   <h2>📌 Requisitos Funcionais</h2>
   <h3 id="rf-1"><strong>1. Autenticação e Acesso</strong></h3>
   <h4><strong>1.1 Login (RF 1.1)</strong></h4>
-  <p>O sistema deve permitir que usuários (apoiadores, missionários e
-    administradores) acessem suas contas utilizando credenciais de
-    e-mail e senha previamente cadastradas.</p>
+  <p>O sistema deve permitir que usuários (apoiadores, missionários,
+    avaliadores e administradores) acessem suas contas utilizando
+    credenciais de e-mail e senha previamente cadastradas.</p>
   <h4><strong>1.2 Redefinição de Senha (RF 1.2)</strong></h4>
   <p>O sistema deve prover um fluxo de recuperação de acesso
     ("esqueci minha senha") onde o usuário informa seu e-mail e recebe
     um link seguro para definir uma nova senha.</p>
   <h4><strong>1.3 Aprovação de Cadastro (RF 1.3)</strong></h4>
-  <p>O perfil de Administrador deve possuir uma área exclusiva para
-    visualizar solicitações de cadastro de missionários. O acesso do
-    missionário ao sistema só deve ser liberado após a aprovação manual
-    realizada nesta área.</p>
+  <p>O perfil de Administrador e o de Avaliador devem possuir uma área
+    exclusiva para visualizar solicitações de cadastro de missionários.
+    O acesso do missionário ao sistema só deve ser liberado após a
+    aprovação manual realizada nesta área.</p>
   <h4><strong>1.4 Acesso sem Autenticação em Rotas Públicas (RF
       1.4)</strong></h4>
   <p>O sistema deve permitir que usuários não autenticados acessem
@@ -362,14 +364,15 @@
   <p>O missionário deve verificar o email enviado para o seu email
     utilizado no cadastro. O email deve ser verificado em um prazo de
     até 7 dias. Caso contrário, o seu cadastro deve ser deletado.</p>
-  <h4><strong>3.3 Email de Alerta para o Administrador (RF
-      3.3)</strong></h4>
-  <p>O administrador recebe um e-mail com as informações do novo
-    missionário cadastrado, somente após o missionário confirmar o seu
-    email de verificação.</p>
-  <h4><strong>3.4 Aprovação do Administrador (RF 3.4)</strong></h4>
-  <p>O administrador faz a aprovação pelo painel de gerenciamento de
-    missionários.</p>
+  <h4><strong>3.3 Email de Alerta para o Administrador e o Avaliador
+      (RF 3.3)</strong></h4>
+  <p>O administrador e o avaliador recebem um e-mail com as
+    informações do novo missionário cadastrado, somente após o
+    missionário confirmar o seu email de verificação.</p>
+  <h4><strong>3.4 Aprovação do Administrador ou do Avaliador (RF
+      3.4)</strong></h4>
+  <p>O administrador ou o avaliador faz a aprovação pelo painel de
+    gerenciamento de missionários.</p>
   <h4><strong>3.5 Primeiro Login do Missionário (RF
       3.5)</strong></h4>
   <p>Ao fazer login na plataforma, o missionário deve completar seu
@@ -460,7 +463,8 @@
   <h5><strong>5.4.1 Aba Projetos de Impacto (RF 5.4.1)</strong></h5>
   <p>O sistema deve exibir uma seção dedicada com recomendações de
     projetos e campanhas missionárias (curadas por administradores ou
-    algoritmo), incentivando o apoio a novas causas.</p>
+    avaliadores, ou por algoritmo), incentivando o apoio a novas
+    causas.</p>
   <h5><strong>5.4.2 Pesquisa (RF 5.4.2)</strong></h5>
   <p>Acesso à ferramenta de busca global para localizar ativamente
     missionários específicos ou projetos de interesse.</p>
@@ -1044,14 +1048,14 @@
   </ul>
   <p>O sistema deve permitir o cadastro de Campanhas de Divulgação
     destinadas à promoção de campanhas missionários e seus projetos
-    associados. Devem ser criadas exclusivamente pelo administrador,
-    conforme <strong>Requisito 18.4</strong>.</p>
+    associados. Devem ser criadas exclusivamente pelo administrador ou
+    pelo avaliador, conforme <strong>Requisito 18.4</strong>.</p>
   <h4>13.2 Associação de Projetos de Impacto (RF 13.2)</h4>
   <p><strong>Uma Campanha pode ou não ter Projetos de Impacto associados</strong>. Caso tenha, poderá possuir um ou mais Projetos de Impacto
     associados.</p>
   <p>Os projetos associados deverão ser selecionados pelo
-    administrador durante a criação ou edição da campanha, conforme
-    <strong>Requisito 18.4</strong>.
+    administrador ou pelo avaliador durante a criação ou edição da
+    campanha, conforme <strong>Requisito 18.4</strong>.
   </p>
   <p>Um Projeto de Impacto poderá participar de diferentes
     campanhas.</p>
@@ -1155,7 +1159,7 @@
   </p>
 
   <ul>
-    <li>apenas o administrador possa criar ou editar Campanhas, conforme Requisito 18.4;</li>
+    <li>apenas o administrador ou o avaliador possa criar ou editar Campanhas, conforme Requisito 18.4;</li>
     <li>
       cada Campanha seja validada de acordo com as regras do seu tipo antes de ser
       associada a Projetos de Impacto (RF 13.2) ou publicada (RF 13.6);
@@ -1198,16 +1202,17 @@
     perfil.</p>
   <h4><strong>14.4 Conteúdo Sugerido e Algoritmo (RF 14.4)</strong></h4>
   <p>A sugestão de projetos pode ser manualmente imposta pelos
-    administradores durante uma campanha de promoção de projetos,
-    conforme painel de gerenciamento administrativo.</p>
+    administradores ou avaliadores durante uma campanha de promoção de
+    projetos, conforme painel de gerenciamento administrativo.</p>
   <ul>
     <li>Caso haja uma lista de projetos selecionados, será exibido um contêiner com os detalhes da Campanha, conforme especifica o <strong>Requisito 13</strong>.</li>
-    <li>Após todos os projetos selecionados pelo administrador terem
-      sido exibidos ao usuário, então, uma heurística de aleatoriedade
-      será usada para selecionar as recomendações paginadas.</li>
+    <li>Após todos os projetos selecionados pelo administrador ou pelo
+      avaliador terem sido exibidos ao usuário, então, uma heurística de
+      aleatoriedade será usada para selecionar as recomendações
+      paginadas.</li>
     <li>Caso não haja nenhum projeto selecionado previamente pelos
-      administradores, a heurística de aleatoriedade será usada para
-      selecionar as recomendações paginadas.</li>
+      administradores ou avaliadores, a heurística de aleatoriedade será
+      usada para selecionar as recomendações paginadas.</li>
   </ul>
   <figure>
     <img src="img/ProjetosDeImpacto.png"
@@ -1269,7 +1274,8 @@
       penalidade via denúncias (conforme Requisito 16), o "soft delete"
       acontece de forma compulsória tanto para missionários quanto para
       usuários comuns. Nestes casos específicos de moderação, suas contas
-      podem ser reativadas futuramente pela administração.</li>
+      podem ser reativadas futuramente por administradores ou
+      avaliadores.</li>
   </ul>
   <h3 id="rf-16"><strong>16. Sistema de Denúncias</strong></h3>
   <h4><strong>16.1 Denúncia de Perfis (RF 16.1)</strong></h4>
@@ -1349,10 +1355,10 @@
     "role" para suspensa.</p>
   <h4><strong>16.6 Alertas de Suspensão (RF 16.6)</strong></h4>
   <p>A aplicação do soft delete por denúncia deve emitir um alerta
-    automático via e-mail para a equipe de administradores da
-    plataforma e também para o missionário ou usuário que sofreu a
-    suspensão. Além disso, o painel de denunciados do Administrador
-    deve ser atualizado com a nova suspensão.</p>
+    automático via e-mail para a equipe de administradores e
+    avaliadores da plataforma e também para o missionário ou usuário
+    que sofreu a suspensão. Além disso, o painel de denunciados deve
+    ser atualizado com a nova suspensão.</p>
   <h3 id="rf-17"><strong>17. Administração do Sistema</strong></h3>
   <h4><strong>17.1 Cadastro de Administrador (RF 17.1)</strong></h4>
   <p>O sistema <strong>não deve</strong> permitir o auto-cadastro de
@@ -1361,22 +1367,37 @@
     provisionamento interno (diretamente na base de dados) ou
     pré-configuração do sistema, garantindo segurança e controle de
     acesso.</p>
+  <p>Uma conta administrativa deve conter os seguintes dados:</p>
+  <ul>
+    <li>Email;</li>
+    <li>Senha;</li>
+    <li>Nome Completo;</li>
+    <li>Telefone;</li>
+    <li>CPF ou Passaporte;</li>
+    <li>Função (<em>role</em>): "Administrador" ou "Avaliador".</li>
+  </ul>
+  <p>O campo de função (<em>role</em>) é o único que diferencia uma
+    conta de Administrador de uma conta de Avaliador, conforme
+    <strong>RF 20</strong>.</p>
   <h4><strong>17.2 Autenticação Administrativa (RF 17.2)</strong></h4>
   <p>O sistema deve possuir uma rota ou área de login distinta ou
     validadora de perfil. No momento da autenticação, o sistema deve
     verificar explicitamente se o usuário possui a função
-    (<em>role</em>) de "Administrador". Caso o usuário não possua essa
-    credencial, o acesso ao painel de gestão deve ser negado, mesmo que
-    as credenciais de e-mail e senha estejam corretas.</p>
+    (<em>role</em>) de "Administrador" ou de "Avaliador". Caso o
+    usuário não possua nenhuma dessas credenciais, o acesso ao painel
+    de gestão deve ser negado, mesmo que as credenciais de e-mail e
+    senha estejam corretas.</p>
   <h4><strong>17.3 Privilégios (RF 17.3)</strong></h4>
-  <p>Somente usuários validados como administradores podem acessar as
-    funcionalidades de aprovação de missionários e gestão de
-    usuários.</p>
+  <p>Somente usuários validados como administradores ou avaliadores
+    podem acessar as funcionalidades de aprovação de missionários. A
+    gestão de usuários e a gestão de contas administrativas permanecem
+    exclusivas do Administrador, conforme <strong>RF 20.6</strong>.</p>
   <h3 id="rf-18"><strong>18. Painel Administrativo</strong></h3>
   <h4><strong>18.1 Listagem de Solicitações Pendentes (RF
       18.1)</strong></h4>
-  <p>Após a autenticação bem-sucedida com perfil administrativo, o
-    sistema deve redirecionar o usuário para o Painel de Aprovação.
+  <p>Após a autenticação bem-sucedida com perfil administrativo
+    (Administrador ou Avaliador), o sistema deve redirecionar o usuário
+    para o Painel de Aprovação.
     Esta interface deve exibir uma listagem (paginada) de todos os
     registros de missionários que possuem o status ou identificador de
     "pendente" no sistema.</p>
@@ -1403,8 +1424,9 @@
   <h4><strong>18.4 Gerenciamento de Campanhas de Divulgação (RF
       18.4</strong></h4>
   <p>O painel administrativo deve possuir uma aba dedicada à
-    "Campanhas", permitindo ao administrador construir uma campanha e
-    uma lista curada de projetos associados que serão exibidos com
+    "Campanhas", permitindo ao administrador ou ao avaliador construir
+    uma campanha e uma lista curada de projetos associados que serão
+    exibidos com
     prioridade na seção "Explore novos projetos" dos usuários, além de
     criar uma página para a Campanha.</p>
   <h5>18.4.1 Listagem de Campanhas (RF 18.4.1)</h5>
@@ -1418,7 +1440,7 @@
     <li>Data de encerramento (quando existir).</li>
   </ul>
   <h5>18.4.2 Operações Administrativas (RF 18.4.2)</h5>
-  <p>O administrador deve poder:</p>
+  <p>O administrador ou o avaliador deve poder:</p>
   <ul>
     <li>Criar campanhas;</li>
     <li>Editar campanhas;</li>
@@ -1428,14 +1450,14 @@
     <li>Duplicar campanhas.</li>
   </ul>
   <h5>18.4.3 Associação de Projetos (RF 18.4.3)</h5>
-  <p>Durante a edição de uma campanha, o administrador deve poder
-    pesquisar Projetos de Impacto pelo nome e associar ou remover
-    projetos da campanha.</p>
+  <p>Durante a edição de uma campanha, o administrador ou o avaliador
+    deve poder pesquisar Projetos de Impacto pelo nome e associar ou
+    remover projetos da campanha.</p>
   <p>O sistema não deve permitir que um mesmo projeto seja associado
     mais de uma vez à mesma campanha.</p>
   <h5>18.4.4 Controle de Publicação (RF 18.4.4)</h5>
-  <p>O administrador deve poder alterar o estado da campanha
-    entre:</p>
+  <p>O administrador ou o avaliador deve poder alterar o estado da
+    campanha entre:</p>
   <ul>
     <li>Rascunho.</li>
     <li>Publicada.</li>
@@ -1448,7 +1470,7 @@
   <h4><strong>18.5 Gerenciamento de Denúncias e Reativação de Contas
       (RF 18.5)</strong></h4>
   <h5><strong>18.18.1 Aba de Denunciados (RF 18.18.1)</strong></h5>
-  <p>O painel do administrador deve possuir uma aba exclusiva chamada
+  <p>O painel administrativo deve possuir uma aba exclusiva chamada
     "Denunciados", contendo uma lista de todos os usuários e
     missionários que entraram em estado de soft delete devido ao
     acúmulo de denúncias. Esta lista deve conter:</p>
@@ -1467,10 +1489,38 @@
     </li>
   </ul>
   <h5><strong>18.18.2 Mecanismos de Reativação (RF 18.18.2)</strong></h5>
-  <p>Nesta aba, o administrador deve poder avaliar cada caso e
-    utilizar um mecanismo/botão para reativar a conta. A reativação
-    reverte o soft delete, remove as restrições da "role" suspensa e
-    restaura o acesso e a visibilidade do perfil na plataforma.</p>
+  <p>Nesta aba, o administrador ou o avaliador deve poder avaliar cada
+    caso e utilizar um mecanismo/botão para reativar a conta. A
+    reativação reverte o soft delete, remove as restrições da "role"
+    suspensa e restaura o acesso e a visibilidade do perfil na
+    plataforma.</p>
+  <h4><strong>18.6 Gerenciamento de Avaliadores (RF 18.6)</strong></h4>
+  <p>O painel administrativo deve possuir uma aba dedicada aos
+    "Avaliadores", destinada à gestão das contas com a função
+    (<em>role</em>) de Avaliador. Esta aba deve ser visível e acessível
+    <strong>somente</strong> para usuários com a função de
+    Administrador, conforme <strong>RF 20.6</strong>.</p>
+  <h5><strong>18.6.1 Aba de Avaliadores (RF 18.6.1)</strong></h5>
+  <p>O sistema deve apresentar uma listagem paginada contendo todos os
+    avaliadores cadastrados, exibindo no mínimo:</p>
+  <ul>
+    <li>Nome completo;</li>
+    <li>Email;</li>
+    <li>Telefone;</li>
+    <li>Data de criação da conta;</li>
+    <li>Status da conta (Ativa ou Revogada).</li>
+  </ul>
+  <h5><strong>18.6.2 Operações Administrativas (RF 18.6.2)</strong></h5>
+  <p>O administrador deve poder:</p>
+  <ul>
+    <li>Criar uma conta de avaliador, informando os dados definidos no
+      <strong>RF 17.1</strong>;</li>
+    <li>Editar os dados de um avaliador;</li>
+    <li>Revogar ou desativar o acesso de um avaliador ao painel.</li>
+  </ul>
+  <p>A revogação de acesso não deve excluir o registro de autoria das
+    ações já executadas pelo avaliador, conforme <strong>RF
+      20.7</strong>.</p>
   <h3 id="rf-19"><strong>19. Histórico de Campanhas</strong></h3>
   <h4><strong>19.1 Registro Histórico de Campanhas (RF 19.1)</strong></h4>
   <p>O sistema deve manter um histórico consultável das campanhas, armazenando apenas dados textuais (string) e datas relacionadas ao ciclo de vida da campanha. Este histórico deve contemplar, no mínimo, os seguintes itens:</p>
@@ -1483,6 +1533,71 @@
   <p>O histórico de campanhas não deve armazenar imagens, banners, capas, selos ou qualquer outro arquivo binário. Toda a persistência desse histórico deve ser limitada a informações textuais e datas, garantindo um registro leve, auditável e consistente com a rastreabilidade das campanhas.</p>
   <h4><strong>19.3 Consulta do Histórico (RF 19.3)</strong></h4>
   <p>O histórico deve permitir a consulta por campanha específica, exibindo os Projetos de Impacto associados e os missionários relacionados a cada projeto, respeitando o período informado pelas datas da campanha.</p>
+  <h3 id="rf-20"><strong>20. Papéis e Privilégios do
+      Avaliador</strong></h3>
+  <h4><strong>20.1 Definição da Role (RF 20.1)</strong></h4>
+  <p>O sistema deve possuir a função (<em>role</em>) de
+    <strong>"Avaliador"</strong>, distinta da função de
+    "Administrador", destinada ao usuário responsável por aprovar os
+    missionários na plataforma. O Avaliador <strong>não é um
+      administrador</strong> e não possui privilégios
+    administrativos.</p>
+  <p>O Avaliador não possui página de perfil público na plataforma e
+    não deve aparecer nos resultados da ferramenta de busca, à
+    semelhança do perfil de Administrador.</p>
+  <h4><strong>20.2 Dados da Conta (RF 20.2)</strong></h4>
+  <p>A conta de Avaliador deve conter os mesmos dados de uma conta
+    administrativa, conforme especificado no <strong>RF
+      17.1</strong>, diferindo exclusivamente no valor do campo de
+    função (<em>role</em>).</p>
+  <h4><strong>20.3 Criação da Conta (RF 20.3)</strong></h4>
+  <p>O sistema <strong>não deve</strong> permitir o auto-cadastro de
+    avaliadores através da interface pública. A conta de Avaliador deve
+    ser criada pelo Administrador através da aba de Avaliadores do
+    painel administrativo, conforme <strong>RF 18.6</strong>.</p>
+  <h4><strong>20.4 Autenticação e Acesso ao Painel (RF
+      20.4)</strong></h4>
+  <p>O Avaliador deve autenticar-se pela mesma rota ou área de login
+    administrativa definida no <strong>RF 17.2</strong>. A validação de
+    perfil deve aceitar tanto a função de "Administrador" quanto a de
+    "Avaliador" para liberar o acesso ao painel.</p>
+  <h4><strong>20.5 Privilégios no Painel Administrativo (RF
+      20.5)</strong></h4>
+  <p>O Avaliador deve ter acesso às abas de aprovação de missionários,
+    campanhas e denúncias do painel administrativo, executando nelas as
+    mesmas ações permitidas ao Administrador:</p>
+  <h5><strong>20.5.1 Aprovação de Missionários (RF 20.5.1)</strong></h5>
+  <p>O Avaliador deve poder visualizar a listagem de solicitações
+    pendentes e aprovar cadastros de missionários, conforme
+    <strong>RF 18.1</strong>, <strong>RF 18.2</strong> e <strong>RF
+      18.3</strong>.</p>
+  <h5><strong>20.5.2 Gerenciamento de Campanhas (RF 20.5.2)</strong></h5>
+  <p>O Avaliador deve poder criar, editar, publicar, arquivar, excluir
+    e duplicar campanhas, além de associar Projetos de Impacto e
+    ordenar os destaques, conforme <strong>RF 18.4</strong>.</p>
+  <h5><strong>20.5.3 Gerenciamento de Denúncias e Reativação (RF
+      20.5.3)</strong></h5>
+  <p>O Avaliador deve poder consultar a aba de denunciados, avaliar
+    cada caso e reativar contas suspensas por acúmulo de denúncias,
+    conforme <strong>RF 18.5</strong>.</p>
+  <h4><strong>20.6 Restrições do Avaliador (RF 20.6)</strong></h4>
+  <p>O Avaliador <strong>não deve</strong> possuir permissão para:</p>
+  <ul>
+    <li>Criar, editar ou remover contas administrativas, sejam elas de
+      Administrador ou de Avaliador;</li>
+    <li>Acessar a aba de Avaliadores do painel administrativo,
+      conforme <strong>RF 18.6</strong>;</li>
+    <li>Executar a gestão geral de usuários da plataforma, como o
+      atendimento de pedidos formais de alteração de nome de usuário,
+      conforme <strong>RF 15.3</strong>.</li>
+  </ul>
+  <h4><strong>20.7 Registro de Autoria das Ações (RF 20.7)</strong></h4>
+  <p>O sistema deve registrar qual conta administrativa
+    (Administrador ou Avaliador) executou cada aprovação de
+    missionário, cada reativação de conta e cada operação sobre
+    campanhas, armazenando também a data e a hora da ação. Este
+    registro deve estar em conformidade com o <strong>NF 4.5
+      (Traçabilidade – LGPD)</strong>.</p>
   <h2>🔒 Requisitos Não Funcionais por Categoria</h2>
   <h3 id="rnf-1"><strong>1. Segurança (NF.1)</strong></h3>
   <h4 id="rnf-1-1"><strong>1.1 Criptografia de Dados Sensíveis (NF
