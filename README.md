@@ -68,10 +68,12 @@ Abaixo está a cópia consolidada do sumário apresentado no documento de requis
 12. **Área de Doações** (Configuração de meios de doação pelo missionário e fluxos de contribuição externa).
 13. **Campanhas de Divulgação** (Cadastro e exibição de banners/selos de campanhas ativas).
 14. **Seção (ou Aba) de Projetos de Impacto** (Aba de descoberta de novos projetos recomendados ou aleatórios).
-15. **Configurações de Conta** (Atualização de dados cadastrais, e-mail, senha e dados eclesiásticos).
+15. **Configurações de Conta** (Atualização de dados cadastrais, e-mail, senha e dados eclesiásticos sem restrição de prazo).
 16. **Sistema de Denúncias** (Fluxo de denúncias de posts, projetos ou perfis impróprios).
-17. **Administração do Sistema** (Gerenciamento global de aprovações, denúncias e categorias).
-18. **Painel Administrativo** (Dashboard com relatórios, métricas de crescimento e engajamento).
+17. **Administração do Sistema** (Gerenciamento global de aprovações, denúncias e provisionamento de administradores).
+18. **Painel Administrativo** (Interface de aprovação, campanhas, gerenciamento de denúncias e gestão de avaliadores).
+19. **Histórico de Campanhas** (Registro textual e consulta do histórico de campanhas e projetos associados).
+20. **Papéis e Privilégios do Avaliador** (Funções administrativas no painel atribuídas a usuários comuns ou missionários).
 
 ### 🔒 Requisitos Não Funcionais (RNF)
 

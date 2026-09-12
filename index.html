@@ -128,18 +128,20 @@
   <h2>📌 Requisitos Funcionais</h2>
   <h3 id="rf-1"><strong>1. Autenticação e Acesso</strong></h3>
   <h4><strong>1.1 Login (RF 1.1)</strong></h4>
-  <p>O sistema deve permitir que usuários (apoiadores, missionários,
-    avaliadores e administradores) acessem suas contas utilizando
-    credenciais de e-mail e senha previamente cadastradas.</p>
+  <p>O sistema deve permitir que usuários (apoiadores e missionários,
+    inclusive aqueles que possuem o cargo de avaliador, bem como
+    administradores) acessem suas contas utilizando credenciais de e-mail e
+    senha previamente cadastradas através do fluxo padrão de login.</p>
   <h4><strong>1.2 Redefinição de Senha (RF 1.2)</strong></h4>
   <p>O sistema deve prover um fluxo de recuperação de acesso
     ("esqueci minha senha") onde o usuário informa seu e-mail e recebe
     um link seguro para definir uma nova senha.</p>
   <h4><strong>1.3 Aprovação de Cadastro (RF 1.3)</strong></h4>
-  <p>O perfil de Administrador e o de Avaliador devem possuir uma área
-    exclusiva para visualizar solicitações de cadastro de missionários.
-    O acesso do missionário ao sistema só deve ser liberado após a
-    aprovação manual realizada nesta área.</p>
+  <p>O Administrador e o usuário com cargo de Avaliador devem possuir
+    uma área exclusiva no Painel Administrativo para visualizar
+    solicitações de cadastro de missionários. O acesso do missionário
+    ao sistema só deve ser liberado após a aprovação manual realizada
+    nesta área.</p>
   <h4><strong>1.4 Acesso sem Autenticação em Rotas Públicas (RF
       1.4)</strong></h4>
   <p>O sistema deve permitir que usuários não autenticados acessem
@@ -1235,13 +1237,13 @@
     redefinição").</h5>
   <h4><strong>15.3 Edição de Dados Eclesiásticos (RF 15.3)</strong></h4>
   <p>Considerando que a vinculação com a comunidade de fé é
-    fundamental para a integridade da plataforma. O usuário poderá
-    atualizar os dados da igreja em um período de 1 mês sem nenhum tipo
-    de pedido formal para a administração. Depois de 1 mês, o
-    administrador deve receber um pedido formal para alterar o nome.
-    Este pedido deve acontecer na própria interface de Configuração de
-    Conta e Dados Eclesiásticos. Qualquer usuário deve poder atualizar
-    os seguintes dados originais de seu cadastro:</p>
+    fundamental para a integridade da plataforma, usuários comuns
+    (apoiadores) e missionários podem atualizar livremente os dados da
+    sua comunidade de fé (igreja) a qualquer momento diretamente na
+    interface de "Configurações de Conta", sem prazo limite (sem a regra
+    de 1 mês) e sem a necessidade de pedido formal ou aprovação prévia
+    da administração. O usuário pode atualizar os seguintes dados
+    originais de seu cadastro:</p>
   <ul>
     <li>Nome da Comunidade de Fé (Igreja).</li>
     <li>Endereço da Comunidade de Fé (Endereço 1, Endereço 2, País,
@@ -1363,44 +1365,49 @@
   <h4><strong>17.1 Cadastro de Administrador (RF 17.1)</strong></h4>
   <p>O sistema <strong>não deve</strong> permitir o auto-cadastro de
     administradores através da interface pública. A criação de contas
-    com privilégios administrativos deve ser restrita, realizada via
+    com privilégios de Administrador deve ser restrita, realizada via
     provisionamento interno (diretamente na base de dados) ou
     pré-configuração do sistema, garantindo segurança e controle de
     acesso.</p>
-  <p>Uma conta administrativa deve conter os seguintes dados:</p>
+  <p>Uma conta de Administrador provisionada deve conter os seguintes dados:</p>
   <ul>
     <li>Email;</li>
     <li>Senha;</li>
     <li>Nome Completo;</li>
     <li>Telefone;</li>
     <li>CPF ou Passaporte;</li>
-    <li>Função (<em>role</em>): "Administrador" ou "Avaliador".</li>
+    <li>Função (<em>role</em>): "Administrador".</li>
   </ul>
-  <p>O campo de função (<em>role</em>) é o único que diferencia uma
-    conta de Administrador de uma conta de Avaliador, conforme
-    <strong>RF 20</strong>.</p>
-  <h4><strong>17.2 Autenticação Administrativa (RF 17.2)</strong></h4>
-  <p>O sistema deve possuir uma rota ou área de login distinta ou
-    validadora de perfil. No momento da autenticação, o sistema deve
-    verificar explicitamente se o usuário possui a função
-    (<em>role</em>) de "Administrador" ou de "Avaliador". Caso o
-    usuário não possua nenhuma dessas credenciais, o acesso ao painel
-    de gestão deve ser negado, mesmo que as credenciais de e-mail e
-    senha estejam corretas.</p>
+  <p>O cargo de <strong>"Avaliador"</strong>, por sua vez, não constitui
+    uma conta administrativa criada do zero por provisionamento interno,
+    sendo uma <em>role</em> atribuída pelo Administrador a um usuário comum
+    (apoiador) ou missionário pré-existente, conforme <strong>RF 18.6</strong>
+    e <strong>RF 20</strong>.</p>
+  <h4><strong>17.2 Autenticação Administrativa e Acesso ao Painel (RF 17.2)</strong></h4>
+  <p>O acesso ao Painel Administrativo é exclusivo para usuários que
+    possuam o perfil de "Administrador" ou o cargo ativo de "Avaliador".
+    O Administrador autentica-se por credenciais administrativas ou
+    validador de perfil, enquanto o Avaliador autentica-se pelo fluxo
+    padrão de login de usuário (<strong>RF 1.1</strong>) e acessa o painel
+    por atalho disponibilizado na interface. Caso o usuário não possua
+    nenhuma dessas credenciais ou <em>roles</em> ativas, o acesso ao
+    painel de gestão deve ser negado.</p>
   <h4><strong>17.3 Privilégios (RF 17.3)</strong></h4>
-  <p>Somente usuários validados como administradores ou avaliadores
-    podem acessar as funcionalidades de aprovação de missionários. A
-    gestão de usuários e a gestão de contas administrativas permanecem
-    exclusivas do Administrador, conforme <strong>RF 20.6</strong>.</p>
+  <p>Usuários com o cargo de Avaliador podem exercer funções de
+    administrador nas abas operacionais do painel (aprovação de
+    missionários, campanhas e tratamento de denúncias/reativação). A
+    gestão de atribuição/revogação do cargo de avaliador e o controle de
+    contas de administradores permanecem prerrogativas exclusivas do
+    Administrador, conforme <strong>RF 18.6</strong> e <strong>RF
+      20.6</strong>.</p>
   <h3 id="rf-18"><strong>18. Painel Administrativo</strong></h3>
   <h4><strong>18.1 Listagem de Solicitações Pendentes (RF
       18.1)</strong></h4>
-  <p>Após a autenticação bem-sucedida com perfil administrativo
-    (Administrador ou Avaliador), o sistema deve redirecionar o usuário
-    para o Painel de Aprovação.
-    Esta interface deve exibir uma listagem (paginada) de todos os
-    registros de missionários que possuem o status ou identificador de
-    "pendente" no sistema.</p>
+  <p>Ao acessar o Painel Administrativo (seja como Administrador ou como
+    usuário com cargo de Avaliador), a aba padrão de visualização deve ser
+    o Painel de Aprovação. Esta interface deve exibir uma listagem
+    (paginada) de todos os registros de missionários que possuem o status
+    ou identificador de "pendente" no sistema.</p>
   <h4><strong>18.2 Interface de Aprovação (RF 18.2)</strong></h4>
   <p>Para cada item da listagem (representado visualmente como um
     <em>card</em> ou linha de tabela), o sistema deve apresentar:
@@ -1496,31 +1503,44 @@
     plataforma.</p>
   <h4><strong>18.6 Gerenciamento de Avaliadores (RF 18.6)</strong></h4>
   <p>O painel administrativo deve possuir uma aba dedicada aos
-    "Avaliadores", destinada à gestão das contas com a função
-    (<em>role</em>) de Avaliador. Esta aba deve ser visível e acessível
-    <strong>somente</strong> para usuários com a função de
+    "Avaliadores", destinada à atribuição e gestão do cargo
+    (<em>role</em>) de Avaliador para usuários comuns (apoiadores) ou
+    missionários cadastrados na plataforma. Esta aba deve ser visível e
+    acessível <strong>somente</strong> para usuários com a função de
     Administrador, conforme <strong>RF 20.6</strong>.</p>
   <h5><strong>18.6.1 Aba de Avaliadores (RF 18.6.1)</strong></h5>
   <p>O sistema deve apresentar uma listagem paginada contendo todos os
-    avaliadores cadastrados, exibindo no mínimo:</p>
+    usuários aos quais foi concedido o cargo de Avaliador, exibindo no
+    mínimo:</p>
   <ul>
     <li>Nome completo;</li>
+    <li>Nome de usuário (<em>@username</em>);</li>
     <li>Email;</li>
-    <li>Telefone;</li>
-    <li>Data de criação da conta;</li>
-    <li>Status da conta (Ativa ou Revogada).</li>
+    <li>Tipo de conta base (Apoiador ou Missionário);</li>
+    <li>Data de atribuição do cargo de Avaliador;</li>
+    <li>Status do cargo (Ativo ou Revogado).</li>
   </ul>
-  <h5><strong>18.6.2 Operações Administrativas (RF 18.6.2)</strong></h5>
+  <h5><strong>18.6.2 Atribuição e Revogação do Cargo (RF 18.6.2)</strong></h5>
   <p>O administrador deve poder:</p>
   <ul>
-    <li>Criar uma conta de avaliador, informando os dados definidos no
-      <strong>RF 17.1</strong>;</li>
-    <li>Editar os dados de um avaliador;</li>
-    <li>Revogar ou desativar o acesso de um avaliador ao painel.</li>
+    <li><strong>Atribuir o cargo de Avaliador:</strong> Pesquisar um
+      usuário comum (apoiador) ou missionário já cadastrado no sistema
+      (por e-mail, nome completo ou nome de usuário) e conceder-lhe a
+      <em>role</em> de Avaliador, habilitando de forma imediata seu acesso
+      ao painel administrativo e às funções de administrador previstas no
+      <strong>RF 20.5</strong>;</li>
+    <li><strong>Revogar o cargo de Avaliador:</strong> Revogar ou
+      desativar o cargo de Avaliador a qualquer momento. A revogação
+      remove imediatamente o acesso do usuário ao painel administrativo e
+      a quaisquer privilégios administrativos, retornando a conta
+      exclusivamente ao seu status e fluxo original (apoiador ou
+      missionário), sem excluir a conta de usuário nem comprometer seus
+      dados, projetos ou postagens.</li>
   </ul>
-  <p>A revogação de acesso não deve excluir o registro de autoria das
-    ações já executadas pelo avaliador, conforme <strong>RF
-      20.7</strong>.</p>
+  <p>A revogação do cargo de Avaliador não deve excluir o registro de
+    autoria das ações já executadas pelo usuário durante o período em
+    que atuou como avaliador, em conformidade com o <strong>RF
+      20.7</strong> e o <strong>NF 4.5 (Traçabilidade – LGPD)</strong>.</p>
   <h3 id="rf-19"><strong>19. Histórico de Campanhas</strong></h3>
   <h4><strong>19.1 Registro Histórico de Campanhas (RF 19.1)</strong></h4>
   <p>O sistema deve manter um histórico consultável das campanhas, armazenando apenas dados textuais (string) e datas relacionadas ao ciclo de vida da campanha. Este histórico deve contemplar, no mínimo, os seguintes itens:</p>
@@ -1536,36 +1556,47 @@
   <h3 id="rf-20"><strong>20. Papéis e Privilégios do
       Avaliador</strong></h3>
   <h4><strong>20.1 Definição da Role (RF 20.1)</strong></h4>
-  <p>O sistema deve possuir a função (<em>role</em>) de
-    <strong>"Avaliador"</strong>, distinta da função de
-    "Administrador", destinada ao usuário responsável por aprovar os
-    missionários na plataforma. O Avaliador <strong>não é um
-      administrador</strong> e não possui privilégios
-    administrativos.</p>
-  <p>O Avaliador não possui página de perfil público na plataforma e
-    não deve aparecer nos resultados da ferramenta de busca, à
-    semelhança do perfil de Administrador.</p>
-  <h4><strong>20.2 Dados da Conta (RF 20.2)</strong></h4>
-  <p>A conta de Avaliador deve conter os mesmos dados de uma conta
-    administrativa, conforme especificado no <strong>RF
-      17.1</strong>, diferindo exclusivamente no valor do campo de
-    função (<em>role</em>).</p>
-  <h4><strong>20.3 Criação da Conta (RF 20.3)</strong></h4>
-  <p>O sistema <strong>não deve</strong> permitir o auto-cadastro de
-    avaliadores através da interface pública. A conta de Avaliador deve
-    ser criada pelo Administrador através da aba de Avaliadores do
-    painel administrativo, conforme <strong>RF 18.6</strong>.</p>
+  <p>O sistema deve possuir a função (<em>role</em>) ou cargo de
+    <strong>"Avaliador"</strong>, concedido a um usuário comum (apoiador)
+    ou usuário missionário cadastrado na plataforma, permitindo-lhe
+    exercer funções de administrador no Painel Administrativo.</p>
+  <p>O usuário que recebe o cargo de Avaliador mantém integralmente seu
+    perfil público original (como apoiador ou missionário), continuando
+    a interagir na plataforma e a constar nas ferramentas de busca
+    conforme seu perfil de usuário. A <em>role</em> de Avaliador tem
+    finalidade e visibilidade estritamente operacionais no âmbito
+    administrativo, não sendo exibida como rótulo ou <em>badge</em> público
+    no cabeçalho de seu perfil para preservar a segurança e a privacidade
+    do usuário.</p>
+  <h4><strong>20.2 Vinculação à Conta de Usuário (RF 20.2)</strong></h4>
+  <p>O Avaliador não constitui uma conta administrativa separada ou
+    criada do zero. Trata-se da própria conta existente de usuário comum
+    ou de missionário na plataforma, mantendo seus dados cadastrais
+    (conforme <strong>RF 2</strong> ou <strong>RF 3</strong>) e suas
+    credenciais de login habituais, à qual é associada a <em>role</em> de
+    Avaliador.</p>
+  <h4><strong>20.3 Atribuição e Revogação do Cargo (RF 20.3)</strong></h4>
+  <p>O sistema <strong>não deve</strong> permitir o auto-cadastro no
+    cargo de Avaliador através da interface pública. A concessão do
+    cargo de Avaliador é prerrogativa exclusiva do Administrador,
+    realizada pela promoção de um usuário cadastrado através da aba de
+    Avaliadores do painel administrativo, conforme <strong>RF 18.6</strong>.
+    Da mesma forma, o cargo pode ser revogado pelo Administrador a
+    qualquer momento, retornando o usuário exclusivamente ao escopo de
+    seu perfil original.</p>
   <h4><strong>20.4 Autenticação e Acesso ao Painel (RF
       20.4)</strong></h4>
-  <p>O Avaliador deve autenticar-se pela mesma rota ou área de login
-    administrativa definida no <strong>RF 17.2</strong>. A validação de
-    perfil deve aceitar tanto a função de "Administrador" quanto a de
-    "Avaliador" para liberar o acesso ao painel.</p>
-  <h4><strong>20.5 Privilégios no Painel Administrativo (RF
+  <p>O usuário com cargo de Avaliador realiza login normalmente pelo fluxo
+    padrão de autenticação da plataforma (conforme <strong>RF 1.1</strong>),
+    utilizando suas credenciais regulares de usuário. Uma vez
+    autenticado, o sistema identifica a presença da <em>role</em> ativa de
+    Avaliador e disponibiliza, no menu ou na barra de navegação, um botão
+    ou atalho de acesso direto ao Painel Administrativo.</p>
+  <h4><strong>20.5 Funções Administrativas no Painel (RF
       20.5)</strong></h4>
-  <p>O Avaliador deve ter acesso às abas de aprovação de missionários,
-    campanhas e denúncias do painel administrativo, executando nelas as
-    mesmas ações permitidas ao Administrador:</p>
+  <p>O usuário com cargo de Avaliador pode exercer funções de
+    administrador no Painel Administrativo, possuindo privilégios para
+    executar ações nas seguintes abas operacionais:</p>
   <h5><strong>20.5.1 Aprovação de Missionários (RF 20.5.1)</strong></h5>
   <p>O Avaliador deve poder visualizar a listagem de solicitações
     pendentes e aprovar cadastros de missionários, conforme
@@ -1581,23 +1612,25 @@
     cada caso e reativar contas suspensas por acúmulo de denúncias,
     conforme <strong>RF 18.5</strong>.</p>
   <h4><strong>20.6 Restrições do Avaliador (RF 20.6)</strong></h4>
-  <p>O Avaliador <strong>não deve</strong> possuir permissão para:</p>
+  <p>Apesar de exercer funções de administrador no painel, o Avaliador
+    <strong>não deve</strong> possuir permissão para:</p>
   <ul>
-    <li>Criar, editar ou remover contas administrativas, sejam elas de
-      Administrador ou de Avaliador;</li>
-    <li>Acessar a aba de Avaliadores do painel administrativo,
-      conforme <strong>RF 18.6</strong>;</li>
-    <li>Executar a gestão geral de usuários da plataforma, como o
-      atendimento de pedidos formais de alteração de nome de usuário,
-      conforme <strong>RF 15.3</strong>.</li>
+    <li>Acessar ou visualizar a aba de Avaliadores do painel
+      administrativo, conforme <strong>RF 18.6</strong>;</li>
+    <li>Atribuir, promover, editar ou revogar cargos de Avaliador para
+      outros usuários;</li>
+    <li>Criar, alterar ou excluir contas com privilégios de
+      Administrador.</li>
   </ul>
   <h4><strong>20.7 Registro de Autoria das Ações (RF 20.7)</strong></h4>
-  <p>O sistema deve registrar qual conta administrativa
-    (Administrador ou Avaliador) executou cada aprovação de
-    missionário, cada reativação de conta e cada operação sobre
-    campanhas, armazenando também a data e a hora da ação. Este
-    registro deve estar em conformidade com o <strong>NF 4.5
-      (Traçabilidade – LGPD)</strong>.</p>
+  <p>O sistema deve registrar qual conta/usuário (Administrador ou
+    usuário com cargo de Avaliador) executou cada aprovação de
+    missionário, cada reativação de conta suspensa e cada operação sobre
+    campanhas, armazenando a identificação do usuário, a data e a hora da
+    ação. Este registro deve permanecer inalterado e auditável mesmo em
+    caso de eventual revogação posterior do cargo de Avaliador, em
+    estrita conformidade com o <strong>NF 4.5 (Traçabilidade –
+      LGPD)</strong>.</p>
   <h2>🔒 Requisitos Não Funcionais por Categoria</h2>
   <h3 id="rnf-1"><strong>1. Segurança (NF.1)</strong></h3>
   <h4 id="rnf-1-1"><strong>1.1 Criptografia de Dados Sensíveis (NF
